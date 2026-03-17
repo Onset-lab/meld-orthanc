@@ -1,0 +1,38 @@
+\033[0;33m USAGE \033[0m
+
+nextflow run main.nf [OPTIONAL_ARGUMENTS] (--input or --dicom or --bids)
+
+\033[0;33m Example: \033[0m
+
+nextflow pull Onset-lab/meld-orthanc/MeldFlow -r main
+nextflow run Onset-lab/meld-orthanc/MeldFlow -r main --input input -with-profile docker -with-docker onsetlab/meld:latest
+
+\033[0;33m DESCRIPTION \033[0m
+
+MeldFlow is a Nextflow pipeline for the computing of MELD report.
+
+    --input=/path/to/[root]             Root folder containing multiple subjects
+
+                                        [root]
+                                        ├── S1
+                                        │   └── *t1.nii.gz
+                                        └── S2
+                                            └── *t1.nii.gz
+
+    --dicom=/path/to/dicom              Path to the DICOM folder
+    --bids=/path/to/dicom              Path to the BIDS folder
+
+\033[0;33m OPTIONAL ARGUMENTS (current value) \033[0m
+
+--output_dir                                Directory where to write the final results.
+                                            By default, will be in ($output_dir)
+
+\033[0;33m AVAILABLE PROFILES (using -profile option (e.g. -profile docker)) \033[0m
+
+docker                                      When this profile is used, the pipeline will use the Docker containers.
+
+apptainer                                   When this profile is used, the pipeline will use the Apptainer containers.
+
+singularity                                 When this profile is used, the pipeline will use the Singularity containers.
+
+slurm                                       When this profile is used, the pipeline will use the Slurm executor.
