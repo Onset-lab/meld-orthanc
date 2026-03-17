@@ -7,8 +7,6 @@ ARG ASSET_FILE
 
 LABEL maintainer="Onset-Lab"
 
-RUN python scripts/new_patient_pipeline/prepare_classifier.py
-
 WORKDIR /
 RUN apt-get update && apt-get -y install git unzip dcm2niix wget dcmtk
 RUN pip install dcm2bids
@@ -25,8 +23,8 @@ COPY ${ASSET_FILE} /assets/
 
 RUN mkdir -p /run/secrets && chmod 700 /run/secrets
 
-RUN echo "$FS_LICENSE" > /run/secrets/license.txt
-RUN echo "$MELD_LICENSE" > /run/secrets/meld_license.txt
+RUN echo "$FS_LICENSE" | tr '|' '\n' > /run/secrets/license.txt
+RUN echo "$FS_LICENSE" | tr '|' '\n' > /run/secrets/meld_license.txt
 ENV FREESURFER_HOME=/opt/freesurfer-7.2.0
 
 WORKDIR /
