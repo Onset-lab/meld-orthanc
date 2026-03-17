@@ -7,6 +7,8 @@ ARG ASSET_FILE
 
 LABEL maintainer="Onset-Lab"
 
+RUN python scripts/new_patient_pipeline/prepare_classifier.py
+
 WORKDIR /
 RUN apt-get update && apt-get -y install git unzip dcm2niix wget dcmtk
 RUN pip install dcm2bids
