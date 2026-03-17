@@ -27,5 +27,8 @@ RUN mkdir -p /run/secrets && chmod 700 /run/secrets
 
 RUN echo "$FS_LICENSE" > /run/secrets/license.txt
 RUN echo "$MELD_LICENSE" > /run/secrets/meld_license.txt
+ENV FREESURFER_HOME=/opt/freesurfer-7.2.0
 
 WORKDIR /
+
+ENTRYPOINT ["/bin/bash"]
