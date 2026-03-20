@@ -1,8 +1,6 @@
 # Use the official Python image as the base image
-FROM meldproject/meld_graph:v2.2.5
+FROM meldproject/meld_graph:v2.2.4_gpu
 
-ARG FS_LICENSE
-ARG MELD_LICENSE
 ARG ASSET_FILE
 
 LABEL maintainer="Onset-Lab"
@@ -23,8 +21,6 @@ COPY ${ASSET_FILE} /assets/
 
 RUN mkdir -p /run/secrets && chmod 700 /run/secrets
 
-RUN echo "$FS_LICENSE" | tr '|' '\n' > /run/secrets/license.txt
-RUN echo "$FS_LICENSE" | tr '|' '\n' > /run/secrets/meld_license.txt
 ENV FREESURFER_HOME=/opt/freesurfer-7.2.0
 
 WORKDIR /
