@@ -1,5 +1,5 @@
 # Use the official Python image as the base image
-FROM meldproject/meld_graph:v2.2.4
+FROM meldproject/meld_graph:v2.2.5
 
 ARG ASSET_FILE
 
